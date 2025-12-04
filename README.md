@@ -5,3 +5,4 @@
 - Designed a structured PostgreSQL database and automated data ingestion via SQLAlchemy, reducing manual processing time by 50% and improving query performance by 40%.
 - Built interactive Power BI dashboards to visualize KPIs, revenue trends, demographic insights, and category performance for business decision-making.
 - Demonstrated end-to-end data lifecycle skills spanning data ingestion, cleaning, SQL-based analysis, and business-focused visualization.
+
