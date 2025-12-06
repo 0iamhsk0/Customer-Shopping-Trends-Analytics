@@ -1,0 +1,22 @@
+{
+  "name": "Teal Black Futuristic Theme",
+  "background": "#000000",
+  "foreground": "#ffffff",
+  "dataColors": ["#00FFD5", "#F7A9FF", "#00A8E8", "#FFDD57"],
+  "visualStyles": {
+    "*": {
+      "*": {
+        "general": [
+          {
+            "properties": {
+              "color": "#00FFD5",
+              "background": "#0A0A0A",
+              "titleTextColor": "#00FFD5",
+              "labelColor": "#CCCCCC"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
