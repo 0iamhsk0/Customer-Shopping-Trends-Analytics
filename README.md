@@ -6,6 +6,14 @@ This project demonstrates the **full data lifecycle** — from raw dataset to bu
 
 ---
 
+## 🖥️ Dashboard Preview
+
+<div align="center">
+<img src="./Customer_Shopping_Analytics_Dashboard.png" width="900">
+</div>
+
+---
+
 ## 📁 Project Structure
 
 | Component | Output |
@@ -23,14 +31,14 @@ This project demonstrates the **full data lifecycle** — from raw dataset to bu
 
 | File | Type | Purpose |
 |------|------|--------|
-| `customer_shopping_trends.ipynb` | 🐍 Jupyter Notebook | Python EDA + Cleaning + Visuals |
-| `customer_trends_query_based_analysis.sql` | 🔍 SQL Queries | Revenue, subscriptions, categories, purchasing patterns |
-| `customer_shopping_analysis_dashboard.pbix` | 📊 Power BI File | Interactive dashboard |
+| [customer_shopping_trends.ipynb](./customer_shopping_trends.ipynb) | 🐍 Jupyter Notebook | Python EDA + Cleaning + Visuals |
+| [customer_trends_query_based_analysis.sql](./customer_trends_query_based_analysis.sql) | 🔍 SQL Queries | Revenue, subscriptions, categories, purchasing patterns |
+| [customer_shopping_analysis_dashboard.pbix](./customer_shopping_analysis_dashboard.pbix) | 📊 Power BI Dashboard | Interactive dashboard |
 | [Customer Shopping Trends Analytics Report.pdf](./Customer%20Shopping%20Trends%20Analytics%20Report.pdf) | 📄 PDF Report | Problem → Approach → Insights |
-| `Customer-Shopping-Trends-Analytics.pptx` | 📑 PPT | Final presentation |
-| `customer_shopping_trends.csv` | 📁 Dataset | 4K+ records |
-| `BlackNeonTheme.json` | 🎨 Theme | Power BI dark theme |
-| `background img.jpg` | 🖼 UI Asset | Dashboard background |
+| [Customer-Shopping-Trends-Analytics.pptx](./Customer-Shopping-Trends-Analytics.pptx) | 📑 Presentation | Final business-ready deck |
+| [customer_shopping_trends.csv](./customer_shopping_trends.csv) | 📁 Dataset | 4K+ customer transactions |
+| [BlackNeonTheme.json](./BlackNeonTheme.json) | 🎨 Theme | Custom Power BI dark theme |
+| [background img.jpg](./background%20img.jpg) | 🖼 UI Asset | Dashboard neon background |
 
 ---
 
@@ -70,7 +78,6 @@ This project analyzes **over 4,000+ purchase records** to derive insights into:
 |----------|------|
 | Programming | Python |
 | Analytics | Pandas, NumPy |
-| Visualization | Seaborn, Matplotlib |
 | SQL | PostgreSQL |
 | Dashboard | Power BI |
 | Reporting | PDF, PPT |
@@ -91,11 +98,11 @@ This project analyzes **over 4,000+ purchase records** to derive insights into:
 
 ## 📊 Dashboard Preview
 
-- 🔹 KPI cards: Total Customers, Avg Purchase Amount, Avg Rating  
-- 🔹 Category & demographic revenue insights  
-- 🔹 Subscription-based segmentation  
-- 🔹 Shipping preference analytics  
-- 🔹 Premium dark theme UI design  
+🔹 KPI cards: Total Customers, Avg Purchase Amount, Avg Rating  
+🔹 Category & demographic revenue insights  
+🔹 Subscription-based segmentation  
+🔹 Shipping preference analytics  
+🔹 Premium dark theme UI design  
 
 📁 Dashboard File → `customer_shopping_analysis_dashboard.pbix`
 
@@ -103,11 +110,11 @@ This project analyzes **over 4,000+ purchase records** to derive insights into:
 
 ## 🧠 Results & Key Insights
 
-- 📌 Young Adults generate the highest revenue  
-- 📌 Subscribed users spend higher & repeat more  
-- 📌 Clothing category dominates sales  
-- 📌 Standard & Free shipping preferred the most  
-- 📌 Review ratings strongly correlate with purchase frequency  
+📌 Young Adults generate the highest revenue  
+📌 Subscribed users spend higher & repeat more  
+📌 Clothing category dominates sales  
+📌 Standard & Free shipping preferred the most  
+📌 Review ratings strongly correlate with purchase frequency  
 
 These insights support business decisions in:
 
@@ -120,6 +127,18 @@ These insights support business decisions in:
 
 ## ▶ How to Run
 
-### Run Python EDA
+### ▶ Run Python EDA
 ```bash
-open customer_shopping_trends.ipynb
+open: customer_shopping_trends.ipynb
+```
+
+### **▶ Run SQL Queries**
+```bash
+open: customer_trends_query_based_analysis.sql
+```
+
+### **▶ View Power BI Dashboard**
+```bash
+open: customer_shopping_analysis_dashboard.pbix
+```
+
