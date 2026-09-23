@@ -1,0 +1,11 @@
+# Customer Shopping Trends Analytics dependencies
+# Core data analysis and visualization
+pandas
+numpy
+matplotlib
+seaborn
+
+# Jupyter environment
+jupyter
+notebook
+ipykernel
