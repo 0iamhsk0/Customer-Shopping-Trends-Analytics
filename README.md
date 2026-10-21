@@ -1,144 +1,58 @@
-# 🛍 Customer Shopping Trends Analytics
+import streamlit as st
 
-A complete end-to-end data analytics project covering **Python EDA**, **data cleaning**, **SQL-based insights**, and a **Power BI dashboard** to uncover behavioral shopping patterns across demographics, subscriptions, shipping preferences, and product categories.
+from ai_layer import answer_question, summarize_kpis
+from data_loader import load_shopping_data
 
-This project demonstrates the **full data lifecycle** — from raw dataset to business insights and reporting.
 
----
+@st.cache_data
+def load_data():
+    return load_shopping_data("customer_shopping_trends.csv")
 
-## 🖥️ Dashboard Preview
 
-<div align="center">
-<img src="./Customer_Shopping_Analytics_Dashboard.png" width="900">
-</div>
+st.set_page_config(page_title="Customer Shopping AI Insights", layout="wide")
 
----
+st.title("🛍 Customer Shopping AI Insights")
 
-## 📁 Project Structure
+with st.sidebar:
+    st.header("Quick questions")
+    sample_questions = [
+        "Which category has the highest revenue?",
+        "Which age group spends the most?",
+        "What is the most popular shipping type?",
+        "Summarize the main trends in this dataset",
+        "What recommendations would you suggest?",
+    ]
+    for question in sample_questions:
+        if st.button(question, use_container_width=True):
+            st.session_state["question"] = question
 
-| Component | Output |
-|----------|--------|
-| Data Loading & Cleaning | Python (Jupyter Notebook) |
-| Exploratory Data Analysis | Pandas, Seaborn |
-| SQL Query-Based Analysis | PostgreSQL |
-| Dashboard | Power BI |
-| Report | PDF Documentation |
-| Presentation | Business Deck |
+    st.markdown("---")
+    st.caption("This is a lightweight AI layer on top of the existing retailer dataset.")
 
----
 
-## 📝 Files in This Repository
+df = load_data()
+kpis = summarize_kpis(df)
 
-| File | Type | Purpose |
-|------|------|--------|
-| [customer_shopping_trends.ipynb](./customer_shopping_trends.ipynb) | 🐍 Jupyter Notebook | Python EDA + Cleaning + Visuals |
-| [customer_trends_query_based_analysis.sql](./customer_trends_query_based_analysis.sql) | 🔍 SQL Queries | Revenue, subscriptions, categories, purchasing patterns |
-| [customer_shopping_analysis_dashboard.pbix](./customer_shopping_analysis_dashboard.pbix) | 📊 Power BI Dashboard | Interactive dashboard |
-| [Customer Shopping Trends Analytics Report.pdf](./Customer%20Shopping%20Trends%20Analytics%20Report.pdf) | 📄 PDF Report | Problem → Approach → Insights |
-| [Customer-Shopping-Trends-Analytics.pptx](./Customer-Shopping-Trends-Analytics.pptx) | 📑 Presentation | Final business-ready deck |
-| [customer_shopping_trends.csv](./customer_shopping_trends.csv) | 📁 Dataset | 4K+ customer transactions |
-| [BlackNeonTheme.json](./BlackNeonTheme.json) | 🎨 Theme | Custom Power BI dark theme |
-| [background img.jpg](./background%20img.jpg) | 🖼 UI Asset | Dashboard neon background |
+col1, col2, col3 = st.columns(3)
+col1.metric("Customers", f"{kpis['total_customers']}")
+col2.metric("Revenue", f"${kpis['total_revenue']:.2f}")
+col3.metric("Avg Sale", f"${kpis['avg_purchase_amount']:.2f}")
 
----
+question = st.text_input(
+    "Ask a business question",
+    value=st.session_state.get("question", "Which category has the highest revenue?"),
+    placeholder="Example: Which category has the highest revenue?"
+)
 
-## 🧾 Overview
+if question:
+    answer = answer_question(df, question)
+    st.info(answer)
 
-This project analyzes **over 4,000+ purchase records** to derive insights into:
+st.markdown("---")
 
-- 👨‍👩‍👧 Demographic influence on revenue  
-- 🛍 Category-wise buying patterns  
-- ⭐ Subscription vs non-subscription behavior  
-- 🚚 Preferred shipping methods  
-- ⭐ Review ratings and satisfaction  
-- 💸 Average spend & repeat purchase patterns  
+st.subheader("Key Business Highlights")
 
----
-
-## 🗂 Dataset Features
-
-| Feature | Description |
-|--------|------------|
-| Gender | Male / Female |
-| Age Group | Senior / Adult / Young Adult |
-| Category | Clothing, Accessories, Footwear |
-| Subscription | Yes / No |
-| Purchase Amount | Revenue Generated |
-| Review Rating | Customer Feedback |
-| Shipping Type | Free, Express, Standard |
-| Previous Purchases | Repeat Customers |
-
-📌 **Source:** Synthetic dataset created for analytics and educational demonstration.
-
----
-
-## 🛠 Tools & Technologies
-
-| Category | Tools |
-|----------|------|
-| Programming | Python |
-| Analytics | Pandas, NumPy |
-| SQL | PostgreSQL |
-| Dashboard | Power BI |
-| Reporting | PDF, PPT |
-| Version Control | Git + GitHub |
-
----
-
-## 🚀 Steps & Process
-
-1️⃣ Import and explore the dataset  
-2️⃣ Handle missing values, formatting, and cleaning  
-3️⃣ Perform EDA with charts and summaries  
-4️⃣ Run SQL queries for segmentation and revenue metrics  
-5️⃣ Build interactive Power BI dashboard  
-6️⃣ Generate report & presentation for stakeholders  
-
----
-
-## 📊 Dashboard Preview
-
-🔹 KPI cards: Total Customers, Avg Purchase Amount, Avg Rating  
-🔹 Category & demographic revenue insights  
-🔹 Subscription-based segmentation  
-🔹 Shipping preference analytics  
-🔹 Premium dark theme UI design  
-
-📁 Dashboard File → `customer_shopping_analysis_dashboard.pbix`
-
----
-
-## 🧠 Results & Key Insights
-
-📌 Young Adults generate the highest revenue  
-📌 Subscribed users spend higher & repeat more  
-📌 Clothing category dominates sales  
-📌 Standard & Free shipping preferred the most  
-📌 Review ratings strongly correlate with purchase frequency  
-
-These insights support business decisions in:
-
-➡ Targeted marketing  
-➡ Inventory forecasting  
-➡ Subscription strategy  
-➡ Shipping optimization  
-
----
-
-## ▶ How to Run
-
-### ▶ Run Python EDA
-```bash
-open: customer_shopping_trends.ipynb
-```
-
-### **▶ Run SQL Queries**
-```bash
-open: customer_trends_query_based_analysis.sql
-```
-
-### **▶ View Power BI Dashboard**
-```bash
-open: customer_shopping_analysis_dashboard.pbix
-```
-
+st.write(f"- Top category: {kpis['top_category']} (${kpis['top_category_revenue']:.2f})")
+st.write(f"- Top age group: {kpis['top_age_group']} (${kpis['top_age_group_revenue']:.2f})")
+st.write(f"- Preferred shipping: {kpis['top_shipping_type']}")
+st.write(f"- Subscription concentration: {kpis['top_subscription_status']} ({kpis['subscription_share_pct']}%)")
