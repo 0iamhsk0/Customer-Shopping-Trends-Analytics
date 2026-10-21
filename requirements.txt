@@ -1,11 +1,33 @@
-# Customer Shopping Trends Analytics dependencies
-# Core data analysis and visualization
-pandas
-numpy
-matplotlib
-seaborn
+# 🛍 Customer Shopping Trends Analytics
 
-# Jupyter environment
-jupyter
-notebook
-ipykernel
+A lightweight AI layer built on top of the existing customer shopping dataset.
+
+## What this adds
+
+This project now includes a simple business-intelligence layer that can answer common shopping questions using the dataset already in this repository.
+
+Examples:
+- Which category generates the most revenue?
+- Which age group spends the most?
+- What is the most common shipping type?
+- Summarize key purchasing trends.
+- What recommendations would you suggest?
+
+## Project files
+
+- `customer_shopping_trends.csv` — source dataset
+- `data_loader.py` — loads and normalizes data
+- `ai_layer.py` — computes KPIs and answers business questions
+- `app.py` — Streamlit dashboard for the AI layer
+
+## Run locally
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+## Notes
+
+This layer is intentionally lightweight and stays aligned with the existing analytics workflow of the project.
+It can be extended later with an OpenAI or Ollama model for richer natural-language explanations.
